@@ -40,18 +40,16 @@
 </template>
 
 <script>
-import Select from '../form/Select.vue'
-import Checkbox from '../form/Checkbox.vue'
 
 export default {
   name: 'input-form',
   components: {
-	  'text' : Select,
-	  'submit' : Select,
-	  'file' : Select,
-	  'date' : Select,
-	  'select' : Select,
-	  'checkbox' : Checkbox
+	  'input-select': function (resolve) {
+        require(['@/components/form/select.vue'], resolve);
+    },
+	  'input-checkbox': function (resolve) {
+        require(['@/components/form/checkbox.vue'], resolve);
+    }
 	},
 	props: ['data'],
 	data: function() {

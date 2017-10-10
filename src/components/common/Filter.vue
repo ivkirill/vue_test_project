@@ -1,7 +1,13 @@
 <template>
   <div class="filter">
-	<label>Строка поиска: </label>
-	<input type="text" name="string" v-on:input="filtering" v-model="filterString">
+		<div class="unit">
+			<div class="unit-left unit-middle">
+				<label>Поиск по странице: </label>
+			</div>
+			<div class="unit-body">
+				<input type="text" name="string" v-on:input="filtering" v-model="filterString">
+			</div>
+		</div>
   </div>
 </template>
 
@@ -46,7 +52,3 @@ export default {
 	}
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

@@ -1,18 +1,22 @@
 <template>
-  123
+    <block-panel :header="header">
+        <table-sortable></table-sortable>
+    </block-panel>
 </template>
 
 <script>
-export default {
-  name: 'page-product-list',
-  components: {
-    panel: function() {
-        import('../common/Panel.vue');
+    export default {
+        name: 'page-product-list',
+        components: {
+            'block-panel': function (resolve) {
+                require(['@/components/common/panel.vue'], resolve);
+            },
+            'table-sortable': function (resolve) {
+                require(['@/components/common/table.vue'], resolve);
+            }
+        },
+        data: function () {
+            return {caption: 'Список продукции', header: 'Список товаров'}
+        }
     }
-  }
-}
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>

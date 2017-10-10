@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import Table from '@/components/common/Table.vue'
-import Form from '@/components/form/Form.vue'
+
+import products_list from '@/pages/products_list.vue'
+import product_edit from '@/pages/product_edit.vue'
+import form from '@/components/form/form.vue'
 
 Vue.use(Router)
 
@@ -11,17 +12,17 @@ export default new Router({
     routes: [{
             path: '/',
             name: 'list',
-            component: Table
+            component: products_list
         },
         {
             path: '/product/add',
             name: 'add',
-            component: Form
+            component: form
         },
         {
             path: '/product/:id',
             name: 'product',
-            component: Form
+            component: product_edit
         }
     ],
     linkActiveClass: 'active',
