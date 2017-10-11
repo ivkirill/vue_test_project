@@ -1,3 +1,7 @@
+<!--
+    Страница списка продукции
+-->
+
 <template>
     <block-panel :header="header">
         <table-sortable></table-sortable>

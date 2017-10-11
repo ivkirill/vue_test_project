@@ -1,6 +1,6 @@
 <template>
   <div class="panel panel-primary">
-    <div class="panel-heading">{{ header }}</div>
+    <div class="panel-heading" v-on:headertail="setHeader">{{ heading }}</div>
     <div class="panel-body">
       <slot></slot>
     </div>
@@ -16,11 +16,27 @@ export default {
         type: String,
         required: true
     },
-    heading: {
-        type: String
-    },
     footer: {
         type: String
+    }
+  },
+  
+  data: function() {
+    return {
+      bubblingHeader: ''
+    }
+  },
+
+  computed: {
+    heading: function() {
+      return this.header + ' ' + this.bubblingHeader;
+    }
+  },
+
+  methods: {
+    setHeader: function(text) {
+      console.log( text );
+      this.bubblingHeader = text;
     }
   }
 }

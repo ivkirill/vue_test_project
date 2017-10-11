@@ -8,7 +8,7 @@
 		<table class="table table-striped table-responsive" >
 			<thead>
 				<tr>
-					<th class="text-nowrap" v-for="(key, index) in headings" v-on:click="sortBy(key)">{{ key.title | lowercase }} 
+					<th class="text-nowrap" v-for="(key, index) in headings" v-on:click="sortBy(key)">{{ key.title | lowercase }}
 						<span class="arrow" v-if="sortFlag(key, index)" v-bind:data-after="sortIcon"></span>
 					</th>
 				</tr>
@@ -31,7 +31,7 @@
 				<tr v-for="entry in renderContent" v-bind:key="entry.product_uid_id">
 					<td v-for="key in headings" :data-title="key.title">
 						<router-link v-if="key.name === 'product_uid_id'" :to="{ name: 'product', params: { id: entry[key.name] }}">{{entry[key.name]}}</router-link>
-						<img v-else-if="key.name === 'product_img_image'" :src="domain + entry[key.name]" width="50" height="50" class="img-responsive" :alt="entry.product_chr_name">
+						<img v-else-if="key.name === 'product_img_image'" :src="domain + entry[key.name]" width="50" height="50" :alt="entry.product_chr_name">
 						<small v-else-if="key.name === 'product_smp_create'">{{entry[key.name]}}</small>
 						<template v-else>{{entry[key.name]}}</template>
 					</td>
@@ -61,7 +61,6 @@
 */
 
 <script>
-import axios from 'axios';
 import Filter from '../common/Filter.vue'
 
 export default {
@@ -224,14 +223,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-  pre {
-		max-height: 300px;
-		overflow-y: auto;
-		text-align: left;
-  }
-
+<style scoped>
   .arrow:after {
 		content: attr(data-after);
+  }
+
+  img {
+	  display: block;
+	  background-color: #eee;
   }
 </style>

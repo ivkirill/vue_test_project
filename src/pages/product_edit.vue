@@ -1,3 +1,7 @@
+<!--
+    Страница редактирования продукта
+-->
+
 <template>
     <block-panel :header="header">
         <form-edit :fields="fields"></form-edit>
@@ -9,7 +13,7 @@
 	import form_fields from '@/fields/product_edit.js';
 
     export default {
-        name: 'page-product-list',
+        name: 'page-product-edit',
         components: {
             'block-panel': function (resolve) {
                 require(['@/components/common/panel.vue'], resolve);
@@ -24,6 +28,8 @@
 				header: 'Редактирование товара',
 				fields: form_fields.fields
 			}
+        },
+        mounted: function() {
         }
     }
 </script>

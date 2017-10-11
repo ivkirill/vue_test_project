@@ -36,4 +36,11 @@
     .navbar-menu a.active {
         font-weight: bold;
     }
+
+  pre {
+    margin-top: 20px;
+		max-height: 300px;
+		overflow-y: auto;
+		text-align: left;
+  }    
 </style>
