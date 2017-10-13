@@ -10,8 +10,8 @@
                     </div>
                     <div class="navbar-body">
                         <div class="navbar-menu right-x" area-labelledby="menu-main">
-                            <router-link class="btn btn-link" :to="{ name: 'list'}">Все товары</router-link>
-                            <router-link class="btn btn-link" :to="{ name: 'add' }">Добавить товар</router-link>
+                            <router-link class="btn btn-link" :to="{ name: 'list'}" exact>Все товары</router-link>
+                            <router-link class="btn btn-link" :to="{ name: 'add' }" exact>Добавить товар</router-link>
                         </div>
                     </div>
                 </header>

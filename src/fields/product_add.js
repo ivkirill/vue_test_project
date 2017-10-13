@@ -1,4 +1,4 @@
-// элементы формы редактирования form_fields
+// элементы формы добавления form_fields
 var form_fields = {};
 
 form_fields[0] = {
@@ -48,7 +48,8 @@ form_fields[5] = {
 form_fields[6] = {
   title: "Дата добавления",
   name: "product_smp_create",
-  type: "date"
+  type: "date",
+  value: Date.now()
 };
 
 form_fields[7] = {

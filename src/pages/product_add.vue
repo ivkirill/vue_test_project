@@ -1,5 +1,5 @@
 <!--
-    Страница редактирования продукта
+    Страница добавления нового продукта
 -->
 
 <template>
@@ -10,7 +10,7 @@
 
 
 <script>
-	import form_fields from '@/fields/product_edit.js';
+	import form_fields from '@/fields/product_add.js';
 
     // присваиваем всем полям свойства value и valid
     for(var key in form_fields) {
@@ -30,7 +30,7 @@
         },
         data: function () {
             return {
-				header: 'Редактирование продукта',
+				header: 'Добавление нового продукта',
 				fields: form_fields
 			}
         }

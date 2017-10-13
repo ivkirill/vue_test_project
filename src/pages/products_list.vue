@@ -12,15 +12,17 @@
     export default {
         name: 'page-product-list',
         components: {
-            'block-panel': function (resolve) {
+            'block-panel': function(resolve) {
                 require(['@/components/common/panel.vue'], resolve);
             },
-            'table-sortable': function (resolve) {
+            'table-sortable': function(resolve) {
                 require(['@/components/common/table.vue'], resolve);
             }
         },
-        data: function () {
-            return {caption: 'Список продукции', header: 'Список товаров'}
+        data: function() {
+            return {
+                header: 'Список продукции'
+            }
         }
     }
 </script>
