@@ -66,7 +66,7 @@
 
             getValues: function () {
                 var self = this;
-                fetch('http://seedunit.ru/test1.html?show=187423&array=187423&mime=json&product_uid_id=' + this.$route.params.id)
+                fetch('http://seedunit.ru/test1.html?show=187423&array=187423&mime=json&product_uid_id=' + this.$route.params.id || 0)
                     .then(function (data) {
                         return data.json();
                     })
