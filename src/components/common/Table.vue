@@ -146,7 +146,17 @@
 			},
 			// контент отфильтрованный и отсортированный
 			renderContent: function() {
-				return this.sorting((this.filterString) ? this.contentFiltered : this.content);
+				var content = this.sorting((this.filterString) ? this.contentFiltered : this.content);
+				console.log(content);
+
+				content = content.map(function(el) {
+					if(!el.product_img_image) el.product_img_image = 'i/gran.jpg';
+					return el;
+				});
+
+				console.log(content);
+
+				return content;
 			},
 			// иконка сортировки
 			sortIcon: function() {

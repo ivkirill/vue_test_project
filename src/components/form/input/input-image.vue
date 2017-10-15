@@ -21,7 +21,6 @@ export default {
 	},
 	computed: {
 		src: function() {
-			console.log('src');
 			return (this.newSrc) ? this.newSrc : 'http://seedunit.ru/' + this.field.value;
 		}
 	},

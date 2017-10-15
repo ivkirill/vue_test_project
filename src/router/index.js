@@ -6,7 +6,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [{
-      path: '/',
+      path: '/products',
       name: 'list',
       component: function(resolve) {
         require(['@/pages/products_list.vue'], resolve);

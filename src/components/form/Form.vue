@@ -1,13 +1,9 @@
 <template>
-    <div class="section section-full">
+    <div>
         <component v-if="updatingData" is="overlay-loader"></component>
         <form v-on:submit.prevent="submitForm" novalidate="novalidate">
             <form-group v-for="item in items" :field="item" @validate="validate" @remove="remove" :key="item.name"></form-group>
         </form>
-        <!--
-        <xmp>{{ items }}</xmp>
-        <xmp>{{ values }}</xmp>
-        -->
     </div>
 </template>
 
