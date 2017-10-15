@@ -13,7 +13,7 @@
 			<input-select :field="field"></input-select>
 		</template>
 		<template v-else>
-			<component :is="view" :field="field" v-model="field.value" @input.native="validate"></component>
+			<component :is="view" :field="field" v-model="field.value" @input.native="validate" @remove="remove"></component>
 		</template>
 	</div>
   </div>
@@ -35,7 +35,7 @@ export default {
 			require(['@/components/form/input/input-text.vue'], resolve);
 		},
 			'input-file': function (resolve) {
-			require(['@/components/form/input/input-text.vue'], resolve);
+			require(['@/components/form/input/input-image.vue'], resolve);
 		},
 			'input-date': function (resolve) {
 			require(['@/components/form/input/input-date.vue'], resolve);
@@ -76,7 +76,7 @@ export default {
 			if( this.field.type === 'submit' ) return 'input-submit';
 			if( this.field.type === 'file' ) return 'input-file';
 			if( this.field.type === 'textarea' ) return 'input-textarea';
-			if( this.field.type === 'date' ) return 'input-text';
+			if( this.field.type === 'date' ) return 'input-date';
 			if( this.field.type === 'email' ) return 'input-text';
 			if( this.field.type === 'text' ) return 'input-text';
 			if( this.field.type === 'number' ) return 'input-number';
@@ -88,7 +88,11 @@ export default {
 		// метод проксирующий в родителя валидацию
 		validate: function() {
 			this.$emit('validate', this.field);
-		}
+		},
+		// метод проксирующий в родителя удаление
+		remove: function(key) {
+			this.$emit('remove', key);
+		}		
 	}
 }
 </script>

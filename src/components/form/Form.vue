@@ -2,7 +2,7 @@
     <div class="section section-full">
         <component v-if="updatingData" is="overlay-loader"></component>
         <form v-on:submit.prevent="submitForm" novalidate="novalidate">
-            <form-group v-for="item in items" :field="item" @validate="validate" :key="item.name"></form-group>
+            <form-group v-for="item in items" :field="item" @validate="validate" @remove="remove" :key="item.name"></form-group>
         </form>
         <!--
         <xmp>{{ items }}</xmp>
@@ -36,7 +36,9 @@
 				// статус загрузки
 				loading: false,                
                 // дефолтный regexp, проверка на пусто
-                reDefault: /.+/
+                reDefault: /.+/,
+                // ключ действия, нужен для API (добавление/сохранение: ', удаление: 'remove')
+                action: ''
             }
         },
         computed: {
@@ -52,7 +54,7 @@
 			// загрузка обновления данных
 			updatingData: function() {
 				return ( this.loading === true && this.content !== null ) ? true : false;
-			},            
+			}
         },
         methods: {
             // валидация поля
@@ -91,12 +93,6 @@
                 }
 
                 return valid;
-
-                /*
-                return !this.items.some(function(el) {
-                    return ((!el.valid) ? self.validate(el) : el.valid) === false;
-                });
-                */
             },
             // получаем данные для формы
             getValues: function() {
@@ -112,8 +108,14 @@
                         self.loading = false;
                     });
             },
+            // удаление записи через REST API
+            remove: function(key) {
+                if( key === true ) this.action = 'remove';
+                else this.action = '';
+            },
             // отправка формы
             submitForm: function() {
+                var self = this;
                 // проблема с кешированием вычисляемого свойства this.valid
                 if (!this.validateForm()) {
                     console.log('Форма НЕ валидна, нужно исправить данные в полях.')
@@ -125,7 +127,7 @@
                 var formData = new FormData();
                 // добавляем объект полей к formData
                 for ( var key in this.items ) {
-                    formData.append(this.items[key].name, this.items[key].value);
+                    if(this.items[key].type != 'submit') formData.append(this.items[key].name, this.items[key].value);
                 }                
 
                 // добавляем поля по рабочему API
@@ -134,6 +136,9 @@
 				formData.append('show', 187423);
 				formData.append('update', 187423);
 				formData.append('quantity', 1);
+
+                // если указано действие удаления, добавляем ключ в форму
+                if( this.action == 'remove' ) formData.append('action', 'remove');
 
                 // если у нас есть открытый продукт, значит мы его редактируем, если нет то добавляем
                 if( this.$route.params.id ) formData.append('product_uid_id', this.$route.params.id);                
@@ -146,6 +151,9 @@
                     })
                     .then(function(content) {
                         console.log( content );
+                        if(self.action == 'remove') {
+                            self.$router.push('/');
+                        }
                     });                
 
             }

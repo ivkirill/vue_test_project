@@ -57,4 +57,10 @@ form_fields[7] = {
   type: "submit"
 };
 
+form_fields[8] = {
+  title: "Удалить",
+  name: "remove",
+  type: "submit"
+};
+
 export default form_fields;
