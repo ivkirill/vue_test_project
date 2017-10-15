@@ -69,6 +69,7 @@ export default {
 	img {
 		display: inline-block;
 		cursor: pointer;
+		max-height: 250px;
 		min-width: 200px;
 		min-height: 200px;
 		font-size: 1.3rem;

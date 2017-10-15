@@ -20,6 +20,14 @@ export default {
 			rte: null
 		}
 	},
+	watch: {
+		field: {
+			'handler' : function() {
+				this.rte.setEditorValue(this.field.value);
+			},
+			deep: true
+		}
+	},
 	methods: {
 		// инициализация плагина
 		init: function() {
@@ -32,10 +40,16 @@ export default {
 			this.rte.editor.addEventListener('input', function () {
 				self.field.value = this.innerHTML;
 			});
-		}
+		},
+		destroy: function() {
+			this.rte.destruct();
+		}		
 	},
 	mounted: function() {
 		this.init();
+	},
+	beforeDestroy: function() {
+		this.destroy();
 	}	
 }
 </script>

@@ -35,10 +35,16 @@ export default {
 					self.$refs.datepicker.removeAttribute('readonly');
 				}
 			})
+		},
+		destroy: function() {
+			this.fp.destroy();
 		}
 	},
 	mounted: function() {
 		this.init();
+	},
+	beforeDestroy: function() {
+		this.destroy();
 	}
 }
 </script>
